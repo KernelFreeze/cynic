@@ -135,11 +135,7 @@ mod reqwest_ext {
 
     use crate::{GraphQlResponse, Operation};
 
-    #[cfg(not(target_arch = "wasm32"))]
     type BoxFuture<'a, T> = Pin<Box<dyn Future<Output = T> + Send + 'a>>;
-
-    #[cfg(target_arch = "wasm32")]
-    type BoxFuture<'a, T> = Pin<Box<dyn Future<Output = T> + 'a>>;
 
     /// An extension trait for reqwest::RequestBuilder.
     ///
